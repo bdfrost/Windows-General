@@ -1,0 +1,18 @@
+# some powershell notes
+
+#to update the help data
+Update-Help 
+
+Get-Help –Name <Cmdlet name>
+
+Get-Help Get-Process -Examples
+
+Get-Service | Sort-Object -property Status
+
+Get-Service | Where-Object {$_.Status –eq “Running”}   # Note: $_ refers to the current record/object in the pipe.
+Get-Service | Where-Object {$_.Status -eq “Running”} | Select-Object Name
+
+Get-WmiObject -Class Win32_OperatingSystem –ComputerName office7 | Select-Object -Property CSName,LastBootUpTime
+Get-WmiObject -Class Win32_OperatingSystem –ComputerName localhost | Select-Object -Property CSName,LastBootUpTime | Select-Object -Property CSName,@{n="Last Booted"; e={[Management.ManagementDateTimeConverter]::ToDateTime($_.LastBootUpTime)}}
+
+nice scriptlets at the end of https://blog.netwrix.com/2018/02/21/windows-powershell-scripting-tutorial-for-beginners/
