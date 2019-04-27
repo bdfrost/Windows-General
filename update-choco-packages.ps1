@@ -1,3 +1,5 @@
+# update packages installed by chocolatey
+
 import-module ActiveDirectory
 
 $Computers = Get-ADComputer -Filter {OperatingSystem -Like "Windows Server*"} | Select-Object -ExpandProperty Name
