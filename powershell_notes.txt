@@ -1,5 +1,8 @@
 # some powershell notes
 
+#remote servers need to be setup for remotewmi
+Enable-PSRemoting
+
 #to update the help data
 Update-Help 
 

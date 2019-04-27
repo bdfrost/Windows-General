@@ -10,9 +10,8 @@
 .LINK
     www.howtogeek.com
 #>
+param(
+    [Parameter(Mandatory=$true)][string]$ComputerName
+)
 
-[Parameter(Mandatory=$true)][string]$ComputerName
-
-Get-WmiObject -Class Win32_OperatingSystem –ComputerName localhost | 
-Select-Object -Property CSName,LastBootUpTime | 
-Select-Object -Property CSName,@{n="Last Booted"; e={[Management.ManagementDateTimeConverter]::ToDateTime($_.LastBootUpTime)}}
+Get-WmiObject -Class Win32_OperatingSystem -ComputerName $ComputerName | Select-Object -Property CSName,@{n="Last Booted";e={[Management.ManagementDateTimeConverter]::ToDateTime($_.LastBootUpTime)}}
