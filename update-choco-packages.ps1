@@ -10,7 +10,7 @@ Invoke-Command -ComputerName $Computers -ScriptBlock {
 
     foreach ($Package in $Packages) {
 
-        choco upgrade $Package -y --acceptlicense | Out-File -FilePath "c:\Windows\Temp\choco-$Package.txt"
+        choco upgrade $Package -y --acceptlicense --ignorechecksum | Out-File -FilePath "c:\Windows\Temp\choco-$Package.txt"
 
         if ($LASTEXITCODE -ne '0') {
 
